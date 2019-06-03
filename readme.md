@@ -26,7 +26,7 @@ Initializes the balancer, returning a single instance of a provider to be used a
 
 | Name                                   | Type          | Description                                                                                                                                                                                                                                                                                                                                            |            |
 | -------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- |
-| { customProviders, ...config }&#x3D;{} | `IInitConfig` | Initialization configuration parameter, custom providers are your own supplied implementations that adhere to the {IProvider} interface. The {providerCallRetryThreshold} determines how many times a provider can fail a call before its determined to be offline. The {network} is what network the balancer will initialize to, defaulting to 'ETH' | _Optional_ |
+| { customProviders, ...config }&#x3D;{} | `IInitConfig` | Initialization configuration parameter, custom providers are your own supplied implementations that adhere to the {IProvider} interface. The {providerCallRetryThreshold} determines how many times a provider can fail a call before its determined to be offline. The {network} is what network the balancer will initialize to, defaulting to 'AUX' | _Optional_ |
 
 ##### Returns
 

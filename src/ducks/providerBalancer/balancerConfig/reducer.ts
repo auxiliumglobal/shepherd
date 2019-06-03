@@ -10,7 +10,7 @@ import {
 const INITIAL_STATE: IBalancerConfigState = {
   manual: false,
   offline: true,
-  network: 'ETH',
+  network: 'AUX',
   providerCallRetryThreshold: 3,
   networkSwitchPending: false,
   queueTimeout: 5000,

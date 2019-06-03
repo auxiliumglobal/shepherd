@@ -22,7 +22,7 @@ describe('initialization tests', () => {
       'eth1',
       makeMockProviderConfig({
         concurrency: 4,
-        network: 'ETH',
+        network: 'AUX',
         requestFailureThreshold: 2,
         timeoutThresholdMs: 3000,
       }),
@@ -50,7 +50,7 @@ describe('initialization tests', () => {
       'eth1',
       makeMockProviderConfig({
         concurrency: 4,
-        network: 'ETH',
+        network: 'AUX',
         requestFailureThreshold: 2,
         timeoutThresholdMs: 3000,
       }),

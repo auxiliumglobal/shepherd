@@ -16,13 +16,13 @@ describe('race condition tests', () => {
     const { shepherd, redux } = getAPI();
     const node = await shepherd.init({
       customProviders: { MockProvider: MockProviderImplem },
-      network: 'ETH',
+      network: 'AUX',
     });
 
     const providerConfigs: StrIdx<IProviderConfig> = {
       eth1: makeMockProviderConfig({
         concurrency: 2,
-        network: 'ETH',
+        network: 'AUX',
         requestFailureThreshold: 3,
         supportedMethods: { getTransactionCount: false },
         timeoutThresholdMs: 3000,
@@ -30,7 +30,7 @@ describe('race condition tests', () => {
 
       eth2: makeMockProviderConfig({
         concurrency: 2,
-        network: 'ETH',
+        network: 'AUX',
         requestFailureThreshold: 2,
         supportedMethods: { getBalance: false },
         timeoutThresholdMs: 3000,
@@ -80,7 +80,7 @@ describe('race condition tests', () => {
     node.getCurrentBlock().catch(e => {
       expect(e.message).toEqual('Call Flushed');
     });
-    await shepherd.switchNetworks('ETH');
+    await shepherd.switchNetworks('AUX');
     await node.getCurrentBlock();
     const state = redux.store.getState();
 
@@ -109,14 +109,14 @@ describe('race condition tests', () => {
       const { shepherd, redux: { store } } = getAPI();
       const failingProvider1 = makeMockProviderConfig({
         concurrency: 2,
-        network: 'ETH',
+        network: 'AUX',
         requestFailureThreshold: 3,
         timeoutThresholdMs: 7000,
       });
 
       const failingProvider2 = makeMockProviderConfig({
         concurrency: 2,
-        network: 'ETH',
+        network: 'AUX',
         requestFailureThreshold: 3,
         timeoutThresholdMs: 1000,
       });
@@ -150,7 +150,7 @@ describe('race condition tests', () => {
         }),
       );
 
-      await shepherd.switchNetworks('ETH');
+      await shepherd.switchNetworks('AUX');
 
       expect(
         getProviderStatsById(store.getState(), 'failingProvider1')!.isOffline,
@@ -169,13 +169,13 @@ describe('race condition tests', () => {
       const { shepherd } = getAPI();
       const node = await shepherd.init({
         customProviders: { MockProvider: MockProviderImplem },
-        network: 'ETH',
+        network: 'AUX',
       });
 
       const providerConfigs: StrIdx<IProviderConfig> = {
         eth: makeMockProviderConfig({
           concurrency: 2,
-          network: 'ETH',
+          network: 'AUX',
           requestFailureThreshold: 3,
           timeoutThresholdMs: 5000,
         }),
@@ -230,13 +230,13 @@ describe('race condition tests', () => {
       const { shepherd, redux: { store } } = getAPI();
       await shepherd.init({
         customProviders: { MockProvider: MockProviderImplem },
-        network: 'ETH',
+        network: 'AUX',
       });
 
       const providerConfigs: StrIdx<IProviderConfig> = {
         eth: makeMockProviderConfig({
           concurrency: 2,
-          network: 'ETH',
+          network: 'AUX',
           requestFailureThreshold: 3,
           timeoutThresholdMs: 5000,
         }),
@@ -275,7 +275,7 @@ describe('race condition tests', () => {
         }),
       );
       await shepherd.switchNetworks('ETC');
-      shepherd.switchNetworks('ETH');
+      shepherd.switchNetworks('AUX');
       await shepherd.switchNetworks('ETC');
 
       expect(getNetwork(store.getState())).toEqual('ETC');

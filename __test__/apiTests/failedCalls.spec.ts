@@ -14,7 +14,7 @@ describe('failed call handling tests', () => {
     const { shepherd, redux } = getAPI();
     const failingProvider = makeMockProviderConfig({
       concurrency: 2,
-      network: 'ETH',
+      network: 'AUX',
       requestFailureThreshold: 3,
       timeoutThresholdMs: 3000,
     });
@@ -22,7 +22,7 @@ describe('failed call handling tests', () => {
     const node = await shepherd.init({
       customProviders: { MockProvider: MockProviderImplem },
 
-      network: 'ETH',
+      network: 'AUX',
     });
 
     shepherd.useProvider(
@@ -49,7 +49,7 @@ describe('failed call handling tests', () => {
 
     const workingProvider = makeMockProviderConfig({
       concurrency: 2,
-      network: 'ETH',
+      network: 'AUX',
       requestFailureThreshold: 3,
       timeoutThresholdMs: 3000,
     });
@@ -69,7 +69,7 @@ describe('failed call handling tests', () => {
     const { shepherd, redux } = getAPI();
     const failingProvider = makeMockProviderConfig({
       concurrency: 2,
-      network: 'ETH',
+      network: 'AUX',
       requestFailureThreshold: 4,
       timeoutThresholdMs: 3000,
     });
@@ -77,7 +77,7 @@ describe('failed call handling tests', () => {
     const node = await shepherd.init({
       customProviders: { MockProvider: MockProviderImplem },
       providerCallRetryThreshold: 2,
-      network: 'ETH',
+      network: 'AUX',
     });
 
     shepherd.useProvider(
@@ -107,14 +107,14 @@ describe('failed call handling tests', () => {
     const { shepherd, redux: { store } } = getAPI();
     const eth1 = makeMockProviderConfig({
       concurrency: 2,
-      network: 'ETH',
+      network: 'AUX',
       requestFailureThreshold: 4,
       timeoutThresholdMs: 200,
     });
 
     const node = await shepherd.init({
       customProviders: { MockProvider: MockProviderImplem },
-      network: 'ETH',
+      network: 'AUX',
     });
 
     shepherd.useProvider(

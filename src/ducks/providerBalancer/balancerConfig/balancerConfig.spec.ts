@@ -15,7 +15,7 @@ describe('Balancer config tests', () => {
     });
 
     it('should select the network as "ETH"', () => {
-      expect(selectors.getNetwork(INITIAL_ROOT_STATE)).toEqual('ETH');
+      expect(selectors.getNetwork(INITIAL_ROOT_STATE)).toEqual('AUX');
     });
 
     it('should select the providerRetryThreshold as "3"', () => {
@@ -36,7 +36,7 @@ describe('Balancer config tests', () => {
       expect(selectors.getBalancerConfig(INITIAL_ROOT_STATE)).toEqual({
         manual: false,
         offline: true,
-        network: 'ETH',
+        network: 'AUX',
         providerCallRetryThreshold: 3,
         networkSwitchPending: false,
         queueTimeout: 5000,
@@ -89,7 +89,7 @@ describe('Balancer config tests', () => {
     });
 
     it('should set the network switch is pending flag to true', () => {
-      const action = actions.balancerNetworkSwitchRequested({ network: 'ETH' });
+      const action = actions.balancerNetworkSwitchRequested({ network: 'AUX' });
       const selector = selectors.isSwitchingNetworks;
 
       expect(selector(rootReducer(undefined as any, action))).toEqual(true);

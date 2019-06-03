@@ -51,7 +51,7 @@ describe('Ducks tests', () => {
 
     it('should select providers that have the network of "ETH"', () => {
       storage = addAllProviderConfigs(storage, providers);
-      expect(selector(storage, 'ETH')).toEqual({
+      expect(selector(storage, 'AUX')).toEqual({
         eth1: providers.eth1,
         eth2: providers.eth2,
       });

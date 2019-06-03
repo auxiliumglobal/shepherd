@@ -4,7 +4,7 @@ import { IProviderConfig } from '@src/ducks/providerConfigs/types';
 const myProviderConfig: IProviderConfig = {
   // size of the worker pool / maximum concurrent requests
   concurrency: 4,
-  network: 'ETH',
+  network: 'AUX',
   // how many failures before provider is considered offline
   requestFailureThreshold: 3,
   // supported methods to pass on to the provider to process
@@ -34,7 +34,7 @@ const myProviderConfig: IProviderConfig = {
 async function main() {
   // initialize the balancer, returning a provider singleton instance to use throughout your application
   const provider = await shepherd.init({
-    network: 'ETH', // the network for the balancer to use
+    network: 'AUX', // the network for the balancer to use
     providerCallRetryThreshold: 4, // how many times a rpc call will be retried until its considered a failed call
   });
 
