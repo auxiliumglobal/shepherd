@@ -14,14 +14,14 @@ describe('manual mode tests', () => {
 
     const eth1 = makeMockProviderConfig({
       concurrency: 2,
-      network: 'ETH',
+      network: 'AUX',
       requestFailureThreshold: 4,
       timeoutThresholdMs: 2000,
       supportedMethods: { estimateGas: false, getTransactionCount: false },
     });
     shepherd.init({
       customProviders: { MockProvider: MockProviderImplem },
-      network: 'ETH',
+      network: 'AUX',
     });
     shepherd.useProvider(
       'MockProvider',
@@ -48,14 +48,14 @@ describe('manual mode tests', () => {
 
     const eth1 = makeMockProviderConfig({
       concurrency: 2,
-      network: 'ETH',
+      network: 'AUX',
       requestFailureThreshold: 4,
       timeoutThresholdMs: 2000,
       supportedMethods: { estimateGas: false, getTransactionCount: false },
     });
     shepherd.init({
       customProviders: { MockProvider: MockProviderImplem },
-      network: 'ETH',
+      network: 'AUX',
     });
     shepherd.useProvider(
       'MockProvider',
@@ -80,7 +80,7 @@ describe('manual mode tests', () => {
 
     shepherd.init({
       customProviders: { MockProvider: MockProviderImplem },
-      network: 'ETH',
+      network: 'AUX',
     });
 
     shepherd.manual('eth1', false).catch(e => {
@@ -101,7 +101,7 @@ describe('manual mode tests', () => {
     });
     shepherd.init({
       customProviders: { MockProvider: MockProviderImplem },
-      network: 'ETH',
+      network: 'AUX',
     });
     shepherd.useProvider(
       'MockProvider',
@@ -133,7 +133,7 @@ describe('manual mode tests', () => {
     });
     shepherd.init({
       customProviders: { MockProvider: MockProviderImplem },
-      network: 'ETH',
+      network: 'AUX',
     });
     shepherd.useProvider(
       'MockProvider',
@@ -152,12 +152,12 @@ describe('manual mode tests', () => {
     const pid = await shepherd.manual('etc1', true);
     expect(pid).toEqual('etc1');
 
-    await shepherd.switchNetworks('ETH').catch(e => {
+    await shepherd.switchNetworks('AUX').catch(e => {
       expect(e.message).toEqual("Can't switch networks when in manual mode!");
     });
 
     shepherd.auto();
-    await shepherd.switchNetworks('ETH');
+    await shepherd.switchNetworks('AUX');
   });
 
   it(
@@ -167,7 +167,7 @@ describe('manual mode tests', () => {
       // make all 3 providers form the full subset so calls only get resolved once all 3 are online
       const eth1 = makeMockProviderConfig({
         concurrency: 2,
-        network: 'ETH',
+        network: 'AUX',
         requestFailureThreshold: 4,
         timeoutThresholdMs: 2000,
         supportedMethods: { estimateGas: false, getTransactionCount: false },
@@ -175,7 +175,7 @@ describe('manual mode tests', () => {
 
       const eth2 = makeMockProviderConfig({
         concurrency: 2,
-        network: 'ETH',
+        network: 'AUX',
         requestFailureThreshold: 4,
         timeoutThresholdMs: 2000,
         supportedMethods: { getTransactionCount: false, sendRawTx: false },
@@ -183,7 +183,7 @@ describe('manual mode tests', () => {
 
       const eth3 = makeMockProviderConfig({
         concurrency: 2,
-        network: 'ETH',
+        network: 'AUX',
         requestFailureThreshold: 4,
         timeoutThresholdMs: 2000,
         supportedMethods: { sendRawTx: false, estimateGas: false },
@@ -191,7 +191,7 @@ describe('manual mode tests', () => {
 
       const node = await shepherd.init({
         customProviders: { MockProvider: MockProviderImplem },
-        network: 'ETH',
+        network: 'AUX',
       });
 
       shepherd.useProvider(
@@ -249,7 +249,7 @@ describe('manual mode tests', () => {
 
       const eth4 = makeMockProviderConfig({
         concurrency: 2,
-        network: 'ETH',
+        network: 'AUX',
         requestFailureThreshold: 4,
         timeoutThresholdMs: 2000,
       });
@@ -314,7 +314,7 @@ describe('manual mode tests', () => {
 
     const eth = makeMockProviderConfig({
       concurrency: 2,
-      network: 'ETH',
+      network: 'AUX',
       requestFailureThreshold: 4,
       timeoutThresholdMs: 2000,
     });
@@ -330,12 +330,12 @@ describe('manual mode tests', () => {
 
     const node = await shepherd.init({
       customProviders: { MockProvider: MockProviderImplem },
-      network: 'ETH',
+      network: 'AUX',
     });
 
     shepherd.useProvider(
       'MockProvider',
-      'eth',
+      'AUX',
       eth,
       new MockProvider(),
       createMockProxyHandler({
@@ -360,7 +360,7 @@ describe('manual mode tests', () => {
     );
     await node.getBalance('0x');
     let state = store.getState();
-    expect(getProviderCallById(state, 0).providerId).toEqual('eth');
+    expect(getProviderCallById(state, 0).providerId).toEqual('AUX');
 
     await shepherd.manual('etc', false);
 
@@ -369,11 +369,11 @@ describe('manual mode tests', () => {
     expect(getNetwork(state)).toEqual('ETC');
     expect(getProviderCallById(state, 1).providerId).toEqual('etc');
 
-    await shepherd.manual('eth', false);
+    await shepherd.manual('AUX', false);
 
     await node.getBalance('0x');
     state = store.getState();
-    expect(getNetwork(state)).toEqual('ETH');
-    expect(getProviderCallById(state, 2).providerId).toEqual('eth');
+    expect(getNetwork(state)).toEqual('AUX');
+    expect(getProviderCallById(state, 2).providerId).toEqual('AUX');
   });
 });

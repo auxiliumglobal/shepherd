@@ -18,7 +18,7 @@ const stateAssigner = (reducerResult: any) => {
 
 export const mockConfig: IProviderConfig = {
   concurrency: 3,
-  network: 'ETH',
+  network: 'AUX',
   requestFailureThreshold: 2,
   supportedMethods: {
     ping: true,

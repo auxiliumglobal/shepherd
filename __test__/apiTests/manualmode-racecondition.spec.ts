@@ -14,7 +14,7 @@ it(
     // make all 3 providers form the full subset so calls only get resolved once all 3 are online
     const eth1 = makeMockProviderConfig({
       concurrency: 2,
-      network: 'ETH',
+      network: 'AUX',
       requestFailureThreshold: 4,
       timeoutThresholdMs: 2000,
       supportedMethods: { estimateGas: false, getTransactionCount: false },
@@ -22,7 +22,7 @@ it(
 
     const eth2 = makeMockProviderConfig({
       concurrency: 2,
-      network: 'ETH',
+      network: 'AUX',
       requestFailureThreshold: 4,
       timeoutThresholdMs: 2000,
       supportedMethods: { getTransactionCount: false, sendRawTx: false },
@@ -30,14 +30,14 @@ it(
 
     const eth3 = makeMockProviderConfig({
       concurrency: 2,
-      network: 'ETH',
+      network: 'AUX',
       requestFailureThreshold: 2,
       timeoutThresholdMs: 5000,
     });
 
     const node = await shepherd.init({
       customProviders: { MockProvider: MockProviderImplem },
-      network: 'ETH',
+      network: 'AUX',
     });
 
     shepherd.useProvider(

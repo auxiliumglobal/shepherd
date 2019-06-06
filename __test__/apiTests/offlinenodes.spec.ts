@@ -14,7 +14,7 @@ describe('offline provider tests', () => {
       const { shepherd, redux: { store } } = getAPI();
       const failingProvider = makeMockProviderConfig({
         concurrency: 2,
-        network: 'ETH',
+        network: 'AUX',
         requestFailureThreshold: 3,
         timeoutThresholdMs: 3000,
       });
@@ -22,7 +22,7 @@ describe('offline provider tests', () => {
       await shepherd.init({
         customProviders: { MockProvider: MockProviderImplem },
 
-        network: 'ETH',
+        network: 'AUX',
       });
 
       shepherd.useProvider(

@@ -14,7 +14,7 @@ export const makeMockProviderConfig = (
 ): IProviderConfig => {
   const defaultConfig: IProviderConfig = {
     concurrency: 3,
-    network: 'ETH',
+    network: 'AUX',
     requestFailureThreshold: 3,
     supportedMethods: {
       ping: true,

@@ -6,7 +6,7 @@ describe('Provider balancer tests', () => {
     expect(getProviderBalancer(INITIAL_ROOT_STATE)).toEqual({
       balancerConfig: {
         manual: false,
-        network: 'ETH',
+        network: 'AUX',
         offline: true,
         providerCallRetryThreshold: 3,
         networkSwitchPending: false,
